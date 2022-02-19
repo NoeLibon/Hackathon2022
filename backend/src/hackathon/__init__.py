@@ -20,7 +20,7 @@ jwt = JWTManager(app)
 
 api = Api(app)
 
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 login_manager = LoginManager(app)
 
@@ -35,6 +35,10 @@ call_queue = {
     }
 }
 
+friend_requests = set()
+
+rooms = {}
+
 CORS(app)
 
-from hackathon import models, urls
+from hackathon import models, urls, events
