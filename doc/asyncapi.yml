@@ -8,6 +8,27 @@ servers:
         protocol: socket.io
         description: Development server.
 channels:
+    online-status:
+        publish:
+            message:
+                name: Online status
+                payload:
+                    type: object
+                    properties:
+                        status:
+                            type: string
+                            enum: ["ONLINE", "OFFLINE"]
+        subscribe:
+            message:
+                name: Online status
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        status:
+                            type: string
+                            enum: ["ONLINE", "OFFLINE"]
     video:
         subscribe:
             message:

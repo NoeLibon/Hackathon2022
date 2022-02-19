@@ -20,6 +20,8 @@ components:
 
         Not Found:
             description: Not Found
+security:
+    - bearerAuth: []
 paths:
     /api/login:
         post:
@@ -53,7 +55,7 @@ paths:
                                 properties:
                                     access_token:
                                         type: string
-                                        example: 'my-token'
+                                        example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NTI3NDQwNywianRpIjoiMDQyYThmYmYtMTRmMS00ZTdlLWJhMzItZTgyNzhlMWVhMGE4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjQ1Mjc0NDA3LCJleHAiOjE2NDUyNzUzMDd9.AUjzrJt9Q3QYqd4oOO18dto6dJUHiMFPPk1vQFJG7TU'
                 '400':
                     $ref: '#/components/responses/Bad Request'
 
@@ -116,9 +118,9 @@ paths:
                     $ref: '#/components/responses/Unauthorized'
 
     /api/user/me:
-        get:
+        post:
             tags: [API]
-            summary: Gets the user informations.
+            summary: Sets the user informations.
             requestBody:
                 content:
                     application/json:
@@ -145,9 +147,9 @@ paths:
                 '401':
                     $ref: '#/components/responses/Unauthorized'
 
-        post:
+        get:
             tags: [API]
-            summary: Sets the user informations.
+            summary: Gets the user informations.
             responses:
                 '200':
                     description: OK

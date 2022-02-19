@@ -1,7 +1,7 @@
 from __future__ import annotations
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from hackathon import db, login_manager
+from hackathon import db, login_manager, jwt
 
 class User(UserMixin, db.Model):
     """This type represents a user."""
@@ -11,6 +11,7 @@ class User(UserMixin, db.Model):
     lastName = db.Column(db.String(80), nullable=False)
     firstName = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(64), nullable=False)
+    contacts = db.relationship('User', secondary='contact', primaryjoin="User.id == Contact.first", secondaryjoin="Contact.second == User.id")
 
     def set_password(self, password: str):
         """Sets the password for `self`.
@@ -33,7 +34,7 @@ class User(UserMixin, db.Model):
         --------
             bool: True if password matches, False otherwise.
         """
-        return check_password_hash(self, password)
+        return check_password_hash(self.password, password)
 
     @staticmethod
     def add_new(username: str, firstName: str, lastName: str, pwd: str) -> User | None:

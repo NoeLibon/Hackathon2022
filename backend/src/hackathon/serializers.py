@@ -15,7 +15,13 @@ class RegisterSerializer(Schema):
     first_name = fields.Str(required=True, validate=data_required)
     last_name = fields.Str(required=True, validate=data_required)
     password = fields.Str(required=True, validate=data_required)
-    re_password = fields.Str(required=True, validate=validate.Equal(password))
+    re_password = fields.Str(required=True, validate=data_required)
+
+class UpdateSerializer(Schema):
+    """This type represents an update serializer."""
+
+    first_name = fields.Str(required=True, validate=data_required)
+    last_name = fields.Str(required=True, validate=data_required)
 
 class CallSerializer(Schema):
     """This type represents a call serializer."""
@@ -23,3 +29,10 @@ class CallSerializer(Schema):
     sector = fields.Str(required=True, validate=data_required)
     proximity = fields.Float(required=True, validate=data_required)
     position = fields.Str(required=True, validate=data_required)
+
+class UserSerializer(Schema):
+    """This type represents a user serializer."""
+
+    user_id = fields.Str(required=True, data_key="id", validate=data_required)
+    first_name = fields.Str(required=True, validate=data_required)
+    last_name = fields.Str(required=True, validate=data_required)
