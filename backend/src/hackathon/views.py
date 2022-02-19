@@ -51,6 +51,7 @@ class UserMe(Resource):
             Response: the response.
         """
         user = get_jwt_identity()
+        return {"first_name": user.firstName, "last_name": user.lastName}
 
     def post(self):
         """This function allows the user to update his informations.
