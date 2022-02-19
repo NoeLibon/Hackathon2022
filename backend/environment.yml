@@ -1,0 +1,8 @@
+name: hackathon
+channels:
+    - anaconda
+dependencies:
+    - python~=3.10
+    - pip~=21.2.4
+    - pip:
+          - -r requirements.txt
