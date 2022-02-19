@@ -5,6 +5,7 @@ from flask_socketio import SocketIO
 from flask_jwt_extended import JWTManager
 from flask_login import LoginManager
 from flask_restful import Api
+from flask_cors import CORS
 from config import BaseConfig
 import eventlet
 
@@ -22,3 +23,7 @@ api = Api(app)
 socketio = SocketIO(app)
 
 login_manager = LoginManager(app)
+
+CORS(app)
+
+from hackathon import models, urls

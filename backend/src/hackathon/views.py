@@ -8,7 +8,7 @@ from hackathon.serializers import LoginSerializer
 class Login(Resource):
     """This type represents the login view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to login.
 
         Returns:
@@ -19,20 +19,20 @@ class Login(Resource):
         try:
             data = serializer.load(request.json)
         except ValidationError:
-            return jsonify({"msg": "Invalid data."}), 400
-
-        user = User.get_by_username(data.username)
-        if user is None or not User.check_password(data.password):
-            return jsonify({"msg": "Invalid credentials."}), 401
+            return {"msg":"Invalid data."}, 400
         
-        return jsonify(
-            access_token=create_access_token(identity=data.username)
-        ), 200
+        user = User.get_by_username(data['username'])
+        if user is None or not User.check_password(data['password']):
+            return {"msg":"Invalid credentials."}, 401
+        
+        return {
+            "access_token":create_access_token(identity=user.id)
+        }, 200
 
 class Register(Resource):
     """This type represents the register view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to register.
 
         Returns:
@@ -43,7 +43,7 @@ class Register(Resource):
 class UserMe(Resource):
     """This type represents the user/me view."""
 
-    def get(self) -> tuple[Response, int]:
+    def get(self):
         """This function allows the user to get his informations.
 
         Returns:
@@ -51,7 +51,7 @@ class UserMe(Resource):
             Response: the response.
         """
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to update his informations.
 
         Returns:
@@ -62,7 +62,7 @@ class UserMe(Resource):
 class UserContact(Resource):
     """This type represents the user/contact view."""
 
-    def get(self) -> tuple[Response, int]:
+    def get(self):
         """This function allows the user to get his contacts.
 
         Returns:
@@ -73,7 +73,7 @@ class UserContact(Resource):
 class CallLearn(Resource):
     """This type represents the call/learn view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to join the learner queue.
 
         Returns:
@@ -84,7 +84,7 @@ class CallLearn(Resource):
 class CallTeach(Resource):
     """This type represents the call/learn view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to join the teacher queue.
 
         Returns:
@@ -95,7 +95,7 @@ class CallTeach(Resource):
 class CallNext(Resource):
     """This type represents the call/next view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to change the user match.
 
         Returns:
@@ -106,7 +106,7 @@ class CallNext(Resource):
 class CallStop(Resource):
     """This type represents the call/stop view."""
 
-    def post(self) -> tuple[Response, int]:
+    def post(self):
         """This function allows the user to remove the user from the queue.
 
         Returns:
