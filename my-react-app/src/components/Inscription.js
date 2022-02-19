@@ -21,17 +21,17 @@ class Inscription extends React.Component {
     return (
         <div>
             <Button variant="secondary" onClick={this.handleShow.bind(this)} >
-            {this.props.buttonFeature}
+                S'inscrire
             </Button>
 
             <Modal show={this.state.modalShow} onHide={this.handleClose.bind(this)} animation={true}>
             <Form>
                 <Modal.Header closeButton>
-                <Modal.Title>Paramètres de l'appareil</Modal.Title>
+                <Modal.Title>Inscription</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                <FormOptions name={this.props.name} ipAddress={this.props.ipAddress} id={this.props.id} groupId={this.props.groupId} type={this.props.type} displayDevice={this.props.displayDevice} />
+                <FormOptions />
 
                 </Modal.Body>
 
@@ -39,7 +39,7 @@ class Inscription extends React.Component {
                 <Button variant="secondary" onClick={this.handleClose.bind(this)}>
                     Fermer la fenêtre
                 </Button>
-                <Button variant="primary" onClick={this.handleValidAlertShow.bind(this)} type="submit">
+                <Button variant="primary" type="submit">
                     Sauvegarder
                 </Button>
                 </Modal.Footer>

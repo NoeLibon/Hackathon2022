@@ -5,15 +5,7 @@ import LoginForm from '../components/LoginForm';
 
 class Index extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  };
-
   render() {
-    const styles = {
-    }
     return (
       <div>
         <Container>
@@ -21,7 +13,6 @@ class Index extends React.Component {
           <LoginForm />
         </Container>
       </div>
-
     );
   };
 }
