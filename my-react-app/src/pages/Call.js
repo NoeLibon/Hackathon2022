@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+import "../App.css";
+import { Button, Container, Row, Col } from 'react-bootstrap'
 
 class Call extends React.Component {
 
@@ -9,49 +10,82 @@ class Call extends React.Component {
         }
     };
 
+    componentDidMount() {
+        var video = document.getElementById('video'),
+            vendorUrl = window.URL || window.webkitURL;
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                }).catch(function (error) {
+                console.log("Something went wrong!");
+            });
+        }
+    }
+
     render() {
-        const STYLES = {
-            contentDiv: {
-                backgroundColor: "grey",
+        const styles = {
+            contentForm: {
+                borderRadius: "20px",
+                backgroundColor: "#eeeeee",
             },
-            contentMargin: {
-                marginLeft: "10px",
-                width: "100%",
+            contentInput: {
+                borderRadius: "4px",
+                backgroundColor: "#f9943b",
+                color: "black",
             },
-            contentAlign: {
-                textAlign: "center",
+            camerasAndChat: {
+                display: "flex",
+                flexDirection: "row",
             },
-            contentColumn: {
-                columns: 2,
+            otherCamera: {
+                display: "flex",
+                height: "86%",
+                width: "70%",
+                backgroundColor: "#f9943b",
             },
-            contentRow: {
-                rows: 2,
+            camAndChat: {
+                display: "flex",
+                height: "86%",
+                width: "30%",
+                flexDirection: "column",
+                backgroundColor: "blue",
+            },
+            myCam: {
+                display: "flex",
+                height: "30%",
+                backgroundColor: "orange",
+            },
+            chat: {
+                display: "flex",
+                flexDirection: "column-reverse",
+                height: "70%",
+                backgroundColor: "green",
+            },
+            body: {
+                overflow: "hidden",
             },
         };
         return (
-            <div>
-                <p>Call page</p>
-                <div style={STYLES.contentAlign}>
-                    <div id="firstName" style={STYLES.contentDiv}>
-                        Casse-Couilles
+            <div style={styles.body}>
+                <h1>
+                    En appel avec Severin
+                </h1>
+                <br/>
+                <Container id="camerasAndChat" style={styles.camerasAndChat}>
+                    <div id="otherCam" style={styles.otherCamera}>
                     </div>
-                    <br/>
-                    <div id="interaction">
-                        <div id="columns" style={STYLES.contentColumn}>
-                            <section id="otherCamera" style={STYLES.contentDiv}>
-                                coucou
-                            </section>
-                            <section id="rightSide" style={STYLES.contentRow}>
-                                <section id="myCamera" style={STYLES.contentDiv}>
-                                    coucou
-                                </section>
-                                <section id="chat" style={STYLES.contentDiv}>
-                                    bonjour
-                                </section>
-                            </section>
+                    <div id="camAndChat" style={styles.camAndChat}>
+                        <div style={styles.myCam}>
+                            <video id="video" width="100%"
+                                   height="100%" autoPlay>
+                            </video>
+                        </div>
+                        <div style={styles.chat}>
+                            <input style={styles.input} type={"text"}/>
                         </div>
                     </div>
-                </div>
+                </Container>
             </div>
 
         );
