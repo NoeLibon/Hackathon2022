@@ -7,10 +7,10 @@ servers:
       description: Development server
 components:
     securitySchemes:
-        cookieAuth:
-            type: apiKey
-            in: cookie
-            name: JSESSIONID
+        bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
     responses:
         Bad Request:
             description: Bad Request
@@ -20,7 +20,6 @@ components:
 
         Not Found:
             description: Not Found
-
 paths:
     /api/login:
         post:
