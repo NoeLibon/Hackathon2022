@@ -1,4 +1,6 @@
 import React from 'react';
+import AppDescription from '../components/AppDescription';
+import LoginForm from '../components/LoginForm';
 
 class Index extends React.Component {
 
@@ -11,6 +13,8 @@ class Index extends React.Component {
   render() {
     return (
       <div>
+        <AppDescription />
+        <LoginForm />
         <p>Index page</p>
       </div>
 
