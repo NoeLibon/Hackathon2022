@@ -3,7 +3,7 @@ from flask_restful import Resource
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from marshmallow import ValidationError
 from hackathon.models import User
-from hackathon.serializers import LoginSerializer
+from hackathon.serializers import LoginSerializer, RegisterSerializer
 
 class Login(Resource):
     """This type represents the login view."""
@@ -39,6 +39,17 @@ class Register(Resource):
         --------
             Response: the response.
         """
+        register = RegisterSerializer()
+        try:
+            data = register.load(request.json)
+        except ValidationError:
+            return{"msg" : "Invalid data."}, 400
+        
+        try:
+            user =  User.add_new(data['username'],data["first_name"],data["last_name"],data["password"],data["re_password"])
+        except ValueError:
+            return{"msg" : "Invalid data."}, 400
+        return "" , 200
 
 class UserMe(Resource):
     """This type represents the user/me view."""
