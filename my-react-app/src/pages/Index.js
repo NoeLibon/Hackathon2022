@@ -15,7 +15,6 @@ class Index extends React.Component {
       <div>
         <AppDescription />
         <LoginForm />
-        <p>Index page</p>
       </div>
 
     );
