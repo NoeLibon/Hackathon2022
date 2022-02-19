@@ -1,0 +1,112 @@
+asyncapi: 2.0.0
+info:
+    title: HACKATHON
+    version: 1.0.0
+servers:
+    development:
+        url: http://localhost:5000/
+        protocol: socket.io
+        description: Development server.
+channels:
+    video:
+        subscribe:
+            message:
+                name: Video
+                payload:
+                    type: object
+    video-control:
+        subscribe:
+            message:
+                name: Video Control
+                payload:
+                    type: object
+                    properties:
+                        command:
+                            type: string
+                            enum: ["VIDEO_STOP", "VIDEO_START"]
+    chat:
+        publish:
+            message:
+                name: Chat
+                payload:
+                    type: object
+                    properties:
+                        message:
+                            type: string
+        subscribe:
+            message:
+                name: Chat
+                payload:
+                    type: object
+                    properties:
+                        date:
+                            type: string
+                            format: date
+                        message:
+                            type: string
+    chat-control:
+        subscribe:
+            message:
+                name: Chat control
+                payload:
+                    type: object
+                    properties:
+                        command:
+                            type: string
+                            enum: ["CHAT_RESET"]
+
+    friend-request:
+        publish:
+            message:
+                name: Friend request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+        subscribe:
+            message:
+                name: Friend request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+
+    friend-validation:
+        publish:
+            message:
+                name: Friend validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        accepted:
+                            type: boolean
+        subscribe:
+            message:
+                name: Friend validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'

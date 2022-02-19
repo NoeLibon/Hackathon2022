@@ -1,0 +1,307 @@
+openapi: 3.0.3
+info:
+    title: HACKATHON
+    version: 1.0.0
+servers:
+    - url: http://localhost:5000/
+      description: Development server
+components:
+    securitySchemes:
+        cookieAuth:
+            type: apiKey
+            in: cookie
+            name: JSESSIONID
+    responses:
+        Bad Request:
+            description: Bad Request
+
+        Unauthorized:
+            description: Unauthorized
+
+        Not Found:
+            description: Not Found
+
+paths:
+    /api/login:
+        post:
+            tags: [API]
+            summary: Logins the user.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                username:
+                                    type: string
+                                    description: The username.
+                                    example: 'admin'
+                                password:
+                                    type: string
+                                    format: password
+                                    description: The password.
+                                    example: 'admin'
+                            required:
+                                - username
+                                - password  
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    access_token:
+                                        type: string
+                                        example: 'my-token'
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/register:
+        post:
+            tags: [API]
+            summary: Registers the user.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                username:
+                                    type: string
+                                    description: The username.
+                                    example: 'admin'
+                                first_name:
+                                    type: string
+                                    description: The user first name.
+                                    example: 'Michel'
+                                last_name:
+                                    type: string
+                                    description: The user last name.
+                                    example: 'Bay'
+                                password:
+                                    type: string
+                                    format: password
+                                    description: The password.
+                                    example: 'admin'
+                                re_password:
+                                    type: string
+                                    format: password
+                                    description: The password again.
+                                    example: 'admin'
+                            required:
+                                - username
+                                - first_name
+                                - last_name
+                                - password
+                                - re_password
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    access_token:
+                                        type: string
+                                        example: 'my-token'
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/user/me:
+        get:
+            tags: [API]
+            summary: Gets the user informations.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                first_name:
+                                    type: string
+                                    description: The user first name.
+                                    example: 'Michel'
+                                last_name:
+                                    type: string
+                                    description: The user last name.
+                                    example: 'Bay'
+                            required:
+                                - first_name
+                                - last_name
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+        post:
+            tags: [API]
+            summary: Sets the user informations.
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    username:
+                                        type: string
+                                        description: The username.
+                                        example: 'admin'
+                                    first_name:
+                                        type: string
+                                        description: The user first name.
+                                        example: 'Michel'
+                                    last_name:
+                                        type: string
+                                        description: The user last name.
+                                        example: 'Bay'
+                                required:
+                                    - username
+                                    - first_name
+                                    - last_name
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/user/contacts:
+        get:
+            tags: [API]
+            summary: Gets the user contacts.
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        user_id:
+                                            type: integer
+                                            description: The user id.
+                                        first_name:
+                                            type: string
+                                            description: The user first name.
+                                            example: 'Michel'
+                                        last_name:
+                                            type: string
+                                            description: The user last name.
+                                            example: 'Bay'
+                                    required:
+                                        - user_id
+                                        - first_name
+                                        - last_name
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/call/teach:
+        post:
+            tags: [API]
+            summary: Adds the user in the teacher queue.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                sector:
+                                    type: string
+                                    description: The sector.
+                                proximity:
+                                    type: number
+                                    description: The proximity in KM.
+                                    example: 10.0
+                                position:
+                                    type: string
+                                    description: The user position.
+                            required:
+                                - sector
+                                - proximity
+                                - position
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/call/learn:
+        post:
+            tags: [API]
+            summary: Adds the user in the learner queue.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                sector:
+                                    type: string
+                                    description: The sector.
+                                proximity:
+                                    type: number
+                                    description: The proximity in KM.
+                                    example: 10.0
+                                position:
+                                    type: string
+                                    description: The user position.
+                            required:
+                                - sector
+                                - proximity
+                                - position
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/call/next:
+        post:
+            tags: [API]
+            summary: Changes the user match.
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
+
+    /api/call/stop:
+        post:
+            tags: [API]
+            summary: Removes the user from the queue.
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    $ref: '#/components/responses/Bad Request'
+
+                '401':
+                    $ref: '#/components/responses/Unauthorized'
