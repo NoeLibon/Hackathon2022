@@ -31,3 +31,11 @@ h1{
 label{
     font-size: large;
 }
+
+.sideToSide {
+    display: flex;
+}
+
+.alignment {
+    text-align: center;
+}
