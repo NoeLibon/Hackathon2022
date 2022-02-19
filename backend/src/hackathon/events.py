@@ -1,8 +1,6 @@
 from flask_socketio import join_room
 from hackathon import socketio
 
-user_status = {}
-
 @socketio.on("online-status")
 def online_status(message: dict[str, object]) -> None:
     """This function represents a online status reception."""

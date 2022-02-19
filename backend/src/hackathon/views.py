@@ -2,9 +2,9 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from marshmallow import ValidationError
-from hackathon import db
-from hackathon.models import Contact, User
-from hackathon.serializers import LoginSerializer, RegisterSerializer, UpdateSerializer, UserSerializer
+from hackathon import db, user_status
+from hackathon.models import User
+from hackathon.serializers import LoginSerializer, RegisterSerializer, UpdateSerializer, UserSerializer, CallSerializer
 
 class Login(Resource):
     """This type represents the login view."""
@@ -108,9 +108,9 @@ class UserContact(Resource):
         """
         user = User.get_by_id(get_jwt_identity())
 
-        serializer = UserSerializer(many=True)
+        serializer = UserSerializer()
 
-        return serializer.dump(user.contacts)
+        return serializer.dump(user.contacts, many=True), 200
 
 
 class CallLearn(Resource):
@@ -124,6 +124,21 @@ class CallLearn(Resource):
         --------
             Response: the response.
         """
+        user = User.get_by_id(get_jwt_identity())
+
+        serializer = CallSerializer()
+
+        try:
+            data = serializer.load(request.json)
+        except ValidationError:
+            return {"msg" : "Invalid data."}, 400
+
+        if data["sector"] not in user_status["learning"]:
+            user_status["learning"][data["sector"]] = [user]
+        else:
+            user_status["learning"][data["sector"]].append(user)
+        
+        return None, 200
 
 class CallTeach(Resource):
     """This type represents the call/learn view."""
@@ -136,6 +151,21 @@ class CallTeach(Resource):
         --------
             Response: the response.
         """
+        user = User.get_by_id(get_jwt_identity())
+
+        serializer = CallSerializer()
+
+        try:
+            data = serializer.load(request.json)
+        except ValidationError:
+            return {"msg" : "Invalid data."}, 400
+        
+        if data["sector"] not in user_status["teaching"]:
+            user_status["teaching"][data["sector"]] = [user]
+        else:
+            user_status["teaching"][data["sector"]].append(user)
+        
+        return None, 200
 
 class CallNext(Resource):
     """This type represents the call/next view."""
@@ -148,6 +178,9 @@ class CallNext(Resource):
         --------
             Response: the response.
         """
+        user = User.get_by_id(get_jwt_identity())
+        
+        return None, 200
 
 class CallStop(Resource):
     """This type represents the call/stop view."""
@@ -160,3 +193,7 @@ class CallStop(Resource):
         --------
             Response: the response.
         """
+        user = User.get_by_id(get_jwt_identity())
+        user_status["learning"].pop(user, None)
+        user_status["teaching"].pop(user, None)
+        return None, 200

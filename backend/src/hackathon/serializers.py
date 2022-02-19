@@ -1,6 +1,5 @@
 from hackathon.validators import data_required
 from marshmallow import Schema, fields
-from marshmallow import validate
 
 class LoginSerializer(Schema):
     """This type represents a login serializer."""
@@ -15,7 +14,6 @@ class RegisterSerializer(Schema):
     first_name = fields.Str(required=True, validate=data_required)
     last_name = fields.Str(required=True, validate=data_required)
     password = fields.Str(required=True, validate=data_required)
-    re_password = fields.Str(required=True, validate=data_required)
 
 class UpdateSerializer(Schema):
     """This type represents an update serializer."""
@@ -33,6 +31,6 @@ class CallSerializer(Schema):
 class UserSerializer(Schema):
     """This type represents a user serializer."""
 
-    user_id = fields.Str(required=True, data_key="id", validate=data_required)
-    first_name = fields.Str(required=True, validate=data_required)
-    last_name = fields.Str(required=True, validate=data_required)
+    id = fields.Integer(required=True, data_key="user_id", validate=data_required)
+    firstName = fields.Str(required=True, data_key="first_name", validate=data_required)
+    lastName = fields.Str(required=True, data_key="last_name", validate=data_required)

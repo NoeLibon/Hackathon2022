@@ -24,6 +24,17 @@ socketio = SocketIO(app)
 
 login_manager = LoginManager(app)
 
+user_status = {}
+
+call_queue = {
+    "teaching": {
+
+    },
+    "learning": {
+        
+    }
+}
+
 CORS(app)
 
 from hackathon import models, urls

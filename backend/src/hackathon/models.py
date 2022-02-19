@@ -1,7 +1,7 @@
 from __future__ import annotations
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from hackathon import db, login_manager, jwt
+from hackathon import db, login_manager
 
 class User(UserMixin, db.Model):
     """This type represents a user."""
