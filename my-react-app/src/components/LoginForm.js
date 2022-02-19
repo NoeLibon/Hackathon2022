@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormOptions from './FormOptions';
@@ -10,11 +11,6 @@ class LoginForm extends React.Component {
     const styles = {
       form: {
         margin: "3rem 0",
-      },
-      button: {
-        backgroundColor:"#f9943b",
-        borderColor:"#f9943b",
-        color:"#000",
       }
     };
 
@@ -22,7 +18,7 @@ class LoginForm extends React.Component {
       <div>
           <Form style={styles.form}>
             <FormOptions />
-            <Button style={styles.button} type="submit">
+            <Button className="orangeButton" type="submit">
                 Connexion
             </Button>
           </Form>

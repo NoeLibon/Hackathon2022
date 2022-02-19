@@ -17,16 +17,13 @@ class Contact extends React.Component {
                 textAlign: "center",
             },
             contentForm: {
-                borderRadius: "4px",
-                backgroundColor: "black",
+                borderRadius: "20px",
+                backgroundColor: "#eeeeee",
             },
             contentInput: {
                 borderRadius: "4px",
-                backgroundColor: "orange",
+                backgroundColor: "#f9943b",
                 color: "black",
-            },
-            contentSpan: {
-                color: "orange",
             },
         };
         return (
@@ -34,36 +31,39 @@ class Contact extends React.Component {
                 <h1>
                     Liste de mes contacts
                 </h1>
-                <table  style={styles.contentAlignment}>
+                <br/>
+                <table>
                     <thead>
                         <tr>
-                            <th>Photo de profil</th>
-                            <th>Nom et prénom</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>Noé Libon</td>
+                            <td>Noé</td>
+                            <td>Libon</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>Emilien Perremans</td>
+                            <td>Emilien</td>
+                            <td>Perremans</td>
                         </tr>
                     </tbody>
                 </table>
-                <br/><hr/>
+                <br/><hr/><br/>
                 <div id="contactAddition">
                     <form id="formResearch" style={styles.contentForm}>
                         <label for="formResearch">
-                            <span style={styles.contentSpan}>Veuillez entrer le nom d'utilisateur de la personne que vous recherchez.</span>
                             <br/>
+                            Veuillez entrer le nom d'utilisateur de la personne que vous recherchez
+                            <br/><br/>
                             <input type="text" name="username" placeholder="Nom d'utilisateur" style={styles.contentInput} />
-                            <br/>
-                            <Button variant="dark" as="input" type="submit" value="Rechercher" style={styles.contentInput} />
+                            <br/><br/>
+                            <Button variant="dark" as="input" type="button" value="Rechercher" style={styles.contentInput} />
+                            <br/><br/>
                         </label>
                     </form>
-                    <br/><hr/>
+                    <br/><hr/><br/>
                     <Button variant="dark" as="input" type="submit" value="Ajouter un contact" style={styles.contentInput} />
                 </div>
             </div>
