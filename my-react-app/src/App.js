@@ -1,24 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Profile from "./pages/Profile";
+import Call from "./pages/Call";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Index from "./pages/Index";
 
 function App() {
+  const styles = {
+    contentDiv: {
+      display: "flex",
+      backgroundColor: "#f9f9f9",
+      height: "100vh",
+      width: "100vw",
+    },
+    contentMargin: {
+      marginLeft: "10px",
+      width: "100%",
+    },
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Omegle de wish, hehe !
-        </p>S
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={styles.contentDiv}>
+        <div style={styles.contentMargin}>
+          <Switch>
+            <Route exact path="/Profile">
+              <Profile />
+            </Route>
+            <Route exact path="/Call">
+              <Call />
+            </Route>
+            <Route exact path="/Contact">
+              <Contact />
+            </Route>
+            <Route exact path="/Home">
+              <Home />
+            </Route>
+            <Route exact path="/">
+              <Index />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
