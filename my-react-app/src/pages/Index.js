@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 import AppDescription from '../components/AppDescription';
 import LoginForm from '../components/LoginForm';
 
@@ -11,10 +12,14 @@ class Index extends React.Component {
   };
 
   render() {
+    const styles = {
+    }
     return (
       <div>
-        <AppDescription />
-        <LoginForm />
+        <Container>
+          <AppDescription />
+          <LoginForm />
+        </Container>
       </div>
 
     );
