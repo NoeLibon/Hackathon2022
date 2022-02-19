@@ -37,6 +37,7 @@ class Call extends React.Component {
             camerasAndChat: {
                 display: "flex",
                 flexDirection: "row",
+                height: "100%",
             },
             otherCamera: {
                 display: "flex",
@@ -64,6 +65,7 @@ class Call extends React.Component {
             },
             body: {
                 overflow: "hidden",
+                height: "100%",
             },
         };
         return (

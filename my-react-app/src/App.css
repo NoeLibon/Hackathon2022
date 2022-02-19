@@ -1,3 +1,14 @@
-div {
-    height:100%;
+.orangeButton {
+    background-color:#f9943b !important;
+    border-color: #f9943b !important;
+    color:#000 !important;
 }
+
+h1{
+    text-align: center;
+}
+
+#localite{
+    display: flex;
+    flex-wrap: wrap;
+} 

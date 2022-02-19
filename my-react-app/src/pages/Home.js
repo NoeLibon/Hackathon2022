@@ -10,9 +10,7 @@ class Home extends React.Component {
                 <h1>Accueil</h1>
                 <Container>
                     <div id='boutonProfil'>
-                   {/* <Row>
-                        <Col><Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link></Col>
-                   </Row>*/}
+                   <Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
                     <form>
                         <input type="checkbox" name='Teach' id='teach'></input> <label for="teach">Teach</label>
