@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Profile from "./pages/Profile";
+import Call from "./pages/Call";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Index from "./pages/Index";
 
 function App() {
   const styles = {
