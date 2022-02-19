@@ -17,7 +17,10 @@ class AppDescription extends React.Component {
 
     return (
       <div>
-          <p>AppDescription</p>
+        <h1>SaugeNeed</h1>
+        <h4>Transmettez votre expérience à d'autres personnes</h4>
+        <h3>Ou..</h3>
+        <h4>Apprenez quelque chose de nouveau</h4>
       </div>
 
     );
