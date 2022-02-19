@@ -14,6 +14,11 @@ channels:
                 name: Video
                 payload:
                     type: object
+        publish:
+            message:
+                name: Video
+                payload:
+                    type: object
     video-control:
         subscribe:
             message:
