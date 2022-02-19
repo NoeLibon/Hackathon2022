@@ -29,10 +29,14 @@ class AppDescription extends React.Component {
                 <Form.Label>Mot de passe</Form.Label>
                 <Form.Control type="password" placeholder="Mot de passe" required />
             </Form.Group>
+
             <Button variant="primary" type="submit">
-                Submit
+                Connexion
             </Button>
-            </Form>
+          </Form>
+          <Button variant="primary" type="submit">
+              S'inscrire
+          </Button>
       </div>
 
     );

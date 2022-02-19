@@ -10,6 +10,9 @@ function App() {
   const styles = {
     contentDiv: {
       display: "flex",
+      backgroundColor: "#f9f9f9",
+      height: "100vh",
+      width: "100vw",
     },
     contentMargin: {
       marginLeft: "10px",
