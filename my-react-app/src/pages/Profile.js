@@ -1,17 +1,14 @@
 import React from 'react';
+import '../App.css';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Profile extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  };
 
   render() {
     return (
       <div>
-        <p>Profile page</p>
+        <Link to="/Home"><Button className="orangeButton">Retour à l'accueil</Button></Link>
       </div>
 
     );
