@@ -1,6 +1,6 @@
 from flask import request, jsonify, Response
 from flask_restful import Resource
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt_identity
 from marshmallow import ValidationError
 from hackathon.models import User
 from hackathon.serializers import LoginSerializer
@@ -50,6 +50,7 @@ class UserMe(Resource):
         --------
             Response: the response.
         """
+        user = get_jwt_identity()
 
     def post(self):
         """This function allows the user to update his informations.
