@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
     firstName = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(64), nullable=False)
 
-    def set_pwd(self, password: str):
+    def set_password(self, password: str):
         """Sets the password for `self`.
 
         Args:
