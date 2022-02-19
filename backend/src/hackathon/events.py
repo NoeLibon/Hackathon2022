@@ -5,7 +5,7 @@ from flask_login import current_user
 from datetime import datetime
 
 @socketio.on('connect')
-def connect(message: dict[str, object]) -> None:
+def connect(message: dict) -> None:
     """This function represents a connection event."""
     if not current_user.is_authenticated:
         socketio_disconnect("Not authentificated")
@@ -36,13 +36,13 @@ def disconnect() -> None:
         leave_room(user.id)
 
 @socketio.on("video")
-def video(message: dict[str, object]) -> None:
+def video(message: dict) -> None:
     """This function represents a video message reception event."""
     print(len(message))
     socketio.emit('video', message, broadcast=True)
 
 @socketio.on("chat")
-def chat(message: dict[str, object]) -> None:
+def chat(message: dict) -> None:
     """This function represents a video message reception event."""
     print("chat")
     receiver_sid, receiver_id = rooms[current_user.id]
@@ -58,7 +58,7 @@ def chat(message: dict[str, object]) -> None:
 
 
 @socketio.on("friend-request")
-def friend_request(message: dict[str, object]):
+def friend_request(message: dict):
     """This function represents a friend request reception event."""
     print("request")
     friend_requests.add((current_user.id, message["user_id"]))
@@ -69,7 +69,7 @@ def friend_request(message: dict[str, object]):
     })
 
 @socketio.on("friend-validation")
-def friend_validation(message: dict[str, object]):
+def friend_validation(message: dict):
     """This function represents a friend request validation reception event."""
     print("validation")
     if (current_user.id, message["user_id"]) not in friend_requests:
