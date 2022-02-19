@@ -20,7 +20,7 @@ class Inscription extends React.Component {
   render() {
     return (
         <div>
-            <Button variant="secondary" onClick={this.handleShow.bind(this)} >
+            <Button variant="secondary" id="inscription" onClick={this.handleShow.bind(this)} >
                 S'inscrire
             </Button>
 
