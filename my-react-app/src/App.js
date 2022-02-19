@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Call from "./pages/Call";
 import Contact from "./pages/Contact";
@@ -20,7 +20,6 @@ function App() {
   return (
     <Router>
       <div style={styles.contentDiv}>
-        <Navbar></Navbar>
         <div style={styles.contentMargin}>
           <Switch>
             <Route exact path="/Profile">
