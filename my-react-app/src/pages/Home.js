@@ -36,8 +36,6 @@ class Home extends React.Component {
                 </div>
                    <Link to="/Call"><Button className="orangeButton">Commencer l'appel</Button></Link>
                     </form>
-
-                    </form>
 <Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
 
