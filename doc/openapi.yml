@@ -44,7 +44,7 @@ paths:
                                     example: 'admin'
                             required:
                                 - username
-                                - password  
+                                - password
             responses:
                 '200':
                     description: OK
@@ -262,10 +262,14 @@ paths:
                                 position:
                                     type: string
                                     description: The user position.
+                                offer:
+                                    type: string
+                                    description: The call offer.
                             required:
                                 - sector
                                 - proximity
                                 - position
+                                - offer
             responses:
                 '200':
                     description: OK

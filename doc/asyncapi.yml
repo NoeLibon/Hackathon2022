@@ -19,7 +19,7 @@ channels:
                             type: integer
                         status:
                             type: string
-                            enum: ["ONLINE", "OFFLINE"]
+                            enum: ['ONLINE', 'OFFLINE']
     video:
         subscribe:
             message:
@@ -40,7 +40,7 @@ channels:
                     properties:
                         command:
                             type: string
-                            enum: ["VIDEO_STOP", "VIDEO_START"]
+                            enum: ['VIDEO_STOP', 'VIDEO_START']
     chat:
         publish:
             message:
@@ -70,7 +70,7 @@ channels:
                     properties:
                         command:
                             type: string
-                            enum: ["CHAT_RESET"]
+                            enum: ['CHAT_RESET']
 
     friend-request:
         publish:
@@ -113,6 +113,62 @@ channels:
         subscribe:
             message:
                 name: Friend validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+
+    call-request:
+        publish:
+            message:
+                name: Call request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+        subscribe:
+            message:
+                name: Call request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+
+    call-validation:
+        publish:
+            message:
+                name: Call validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        accepted:
+                            type: boolean
+        subscribe:
+            message:
+                name: Call validation
                 payload:
                     type: object
                     properties:
