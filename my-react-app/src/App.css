@@ -2,6 +2,11 @@
     background-color:#f9943b !important;
     border-color: #f9943b !important;
     color:#000 !important;
+    width: 250px;
+    height: 90px;
+    float:left;
+    margin:32px;
+
 }
 
 h1{
@@ -12,3 +17,36 @@ h1{
     display: flex;
     flex-wrap: wrap;
 } 
+
+#inscription{
+    width: 250px;
+    height: 90px;
+}
+
+#formBasicEmail, #formBasicPassword{
+    height: 60px;
+    font-size: larger;
+}
+
+label{
+    font-size: large;
+}
+
+.sideToSide {
+    display: flex;
+}
+
+.alignment {
+    text-align: center;
+}
+
+#corps{
+    position: center;
+}
+
+#dropdown-basic {
+    width: 250px;
+    height: 90px;
+    float:left;
+    margin:32px;
+}

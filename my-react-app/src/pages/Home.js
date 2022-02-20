@@ -6,18 +6,15 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
     render() {
         return (
-            <div>
+            <div id="corps">
                 <h1>Accueil</h1>
                 <Container>
                     <div id='boutonProfil'>
-                   <Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
-
                     <form>
-                        <input type="checkbox" name='Teach' id='teach'></input> <label for="teach">Teach</label>
-                        <input type="checkbox" name='Learn' id='learn' checked></input> <label for="teach">Learn</label> 
-
+                        <p>
+                            Sélectionner un secteur:
+                        </p>
                         <Row>
-                    <p>secteurs : </p>
                         <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Tous les secteurs
@@ -29,17 +26,19 @@ class Home extends React.Component {
                             <Dropdown.Item href="#/action-3">Informatique</Dropdown.Item>
                         </Dropdown.Menu>
                         </Dropdown>
-                    </Row>
+                        </Row>
                     <Row>
-                        <Col><Button className="orangeButton">Teach</Button></Col>
-                        <Col><Button className="orangeButton">Learn</Button></Col>
+                        <Col><Button className="orangeButton">Préférence pour enseigner</Button></Col>
+                        <Col><Button className="orangeButton">Préférence pour apprendre</Button></Col>
                     </Row>
                 <div id='localite'>
-                    <p>Proximité :</p><input type="number" step = "10" legend="0"></input>
+                    <p>Proximité :</p><input type="number" step = "1" min="1" max="100"></input>
                 </div>
                    <Link to="/Call"><Button className="orangeButton">Commencer l'appel</Button></Link>
                     </form>
 
+                    </form>
+<Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
 
 

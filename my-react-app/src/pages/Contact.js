@@ -15,6 +15,8 @@ class Contact extends React.Component {
                 margin: "auto",
                 padding: "auto",
                 textAlign: "center",
+                overflow: "hidden",
+                height: "100%",
             },
             contentForm: {
                 borderRadius: "20px",
@@ -56,15 +58,16 @@ class Contact extends React.Component {
                         <label for="formResearch">
                             <br/>
                             Veuillez entrer le nom d'utilisateur de la personne que vous recherchez
-                            <br/><br/>
-                            <input type="text" name="username" placeholder="Nom d'utilisateur" style={styles.contentInput} />
-                            <br/><br/>
-                            <Button variant="dark" as="input" type="button" value="Rechercher" style={styles.contentInput} />
-                            <br/><br/>
+                            <br/>
+                                <div className="sideToSide">
+                                    <input type="text" name="username" className="orangeButton" placeholder="Nom d'utilisateur" style={styles.contentInput} />
+                                    <Button variant="dark" as="input" type="button" className="orangeButton" value="Rechercher" style={styles.contentInput} />
+                                </div>
+                            <br/>
                         </label>
                     </form>
-                    <br/><hr/><br/>
-                    <Button variant="dark" as="input" type="submit" value="Ajouter un contact" style={styles.contentInput} />
+                    <br/><hr/>
+                    <Button variant="dark" as="input" className="orangeButton" type="submit" value="Ajouter un contact" style={styles.contentInput} />
                 </div>
             </div>
         );
