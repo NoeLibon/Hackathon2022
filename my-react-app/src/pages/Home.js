@@ -34,9 +34,11 @@ class Home extends React.Component {
                 <div id='localite'>
                     <p>Proximité :</p><input type="number" step = "1" min="1" max="100"></input>
                 </div>
-                   <Link to="/Call"><Button className="orangeButton">Commencer l'appel</Button></Link>
+                    <Row>
+                        <Col><Link to="/Call"><Button className="orangeButton">Commencer l'appel</Button></Link></Col>
+                        <Col><Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link></Col>
+                    </Row>
                     </form>
-<Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
 
 
