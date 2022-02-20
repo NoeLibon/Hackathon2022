@@ -10,7 +10,7 @@ class Home extends React.Component {
                 <h1>Accueil</h1>
                 <Container>
                     <div id='boutonProfil'>
-                   <Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
+                   
 
                     <form>
                         <input type="checkbox" name='Teach' id='teach'></input> <label for="teach">Teach</label>
@@ -35,10 +35,11 @@ class Home extends React.Component {
                         <Col><Button className="orangeButton">Learn</Button></Col>
                     </Row>
                 <div id='localite'>
-                    <p>Proximité :</p><input type="number" step = "10" legend="0"></input>
+                    <p>Proximité :</p><input type="number" step = "1" min="1" max="100"></input>
                 </div>
-                    </form>
 
+                    </form>
+<Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
 
 
