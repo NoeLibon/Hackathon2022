@@ -15,6 +15,8 @@ class Contact extends React.Component {
                 margin: "auto",
                 padding: "auto",
                 textAlign: "center",
+                overflow: "hidden",
+                height: "100%",
             },
             contentForm: {
                 borderRadius: "20px",
