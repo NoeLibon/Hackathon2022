@@ -11,9 +11,20 @@ class Call extends React.Component {
         }
     };
 
-    componentDidMount() {
-        var video = document.getElementById('video'),
-            vendorUrl = window.URL || window.webkitURL;
+    stopCall() {
+        var video = document.getElementById('video');
+        var stream = video.srcObject;
+        var tracks = stream.getTracks();
+        for (var i = 0; i < tracks.length; i++) {
+            var track = tracks[i];
+            track.stop();
+        }
+
+        video.srcObject = null;
+    }
+
+    startCall() {
+        var video = document.getElementById('video');
         if (navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function (stream) {
@@ -22,6 +33,10 @@ class Call extends React.Component {
                 console.log("Something went wrong!");
             });
         }
+    }
+
+    componentDidMount() {
+        this.startCall()
     }
 
     render() {
@@ -90,8 +105,10 @@ class Call extends React.Component {
                     </div>
                 </Container>
                 <Link to="/Call"><Button className="orangeButton">Passer à la personne suivante</Button></Link>
-                <Link to="/Home"><Button className="orangeButton">Quitter l'appel</Button></Link>
+                <Link to="/Home" onClick={this.stopCall}><Button className="orangeButton">Quitter l'appel</Button></Link>
                 <Button className="orangeButton">Ajouter la personne dans mes amis</Button>
+                <Button className="orangeButton" onClick={this.stopCall}>Stopper la camera</Button>
+                <Button className="orangeButton" onClick={this.startCall}>Mettre la camera</Button>
             </div>
 
         );
