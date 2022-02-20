@@ -2,6 +2,7 @@ import React from 'react';
 import "../App.css";
 import { Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import Message from "../components/Message";
 
 class Call extends React.Component {
 
@@ -59,25 +60,24 @@ class Call extends React.Component {
                 display: "flex",
                 height: "95%",
                 width: "70%",
-                backgroundColor: "#f9943b",
+                border: "black 1px solid",
             },
             camAndChat: {
                 display: "flex",
                 height: "95%",
                 width: "30%",
                 flexDirection: "column",
-                backgroundColor: "blue",
             },
             myCam: {
                 display: "flex",
                 height: "30%",
-                backgroundColor: "orange",
+                border: "black 1px solid",
             },
             chat: {
                 display: "flex",
                 flexDirection: "column-reverse",
                 height: "70%",
-                backgroundColor: "green",
+                border: "black 1px solid",
             },
             body: {
                 overflow: "hidden",
@@ -87,7 +87,7 @@ class Call extends React.Component {
         return (
             <div style={styles.body}>
                 <h1>
-                    En appel avec Severin
+                    En appel avec Charlotte
                 </h1>
                 <br/>
                 <Container id="camerasAndChat" style={styles.camerasAndChat}>
@@ -101,6 +101,8 @@ class Call extends React.Component {
                         </div>
                         <div style={styles.chat}>
                             <input style={styles.input} type={"text"}/>
+                            <Message name="Noé" message="Merci !" />
+                            <Message name="Charlotte" message="https://www.marmiton.org/recettes" />
                         </div>
                     </div>
                 </Container>
