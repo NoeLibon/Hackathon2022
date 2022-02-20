@@ -20,17 +20,9 @@ channels:
                         status:
                             type: string
                             enum: ['ONLINE', 'OFFLINE']
-    video:
-        subscribe:
-            message:
-                name: Video
-                payload:
-                    type: object
-        publish:
-            message:
-                name: Video
-                payload:
-                    type: object
+                    required:
+                        - user_id
+                        - status
     video-control:
         subscribe:
             message:
@@ -41,6 +33,8 @@ channels:
                         command:
                             type: string
                             enum: ['VIDEO_STOP', 'VIDEO_START']
+                    required:
+                        - command
     chat:
         publish:
             message:
@@ -50,6 +44,8 @@ channels:
                     properties:
                         message:
                             type: string
+                    required:
+                        - message
         subscribe:
             message:
                 name: Chat
@@ -61,6 +57,9 @@ channels:
                             format: date
                         message:
                             type: string
+                    required:
+                        - date
+                        - message
     chat-control:
         subscribe:
             message:
@@ -71,6 +70,8 @@ channels:
                         command:
                             type: string
                             enum: ['CHAT_RESET']
+                    required:
+                        - command
 
     friend-request:
         publish:
@@ -81,6 +82,8 @@ channels:
                     properties:
                         user_id:
                             type: integer
+                    required:
+                        - user_id
         subscribe:
             message:
                 name: Friend request
@@ -98,6 +101,10 @@ channels:
                             type: string
                             description: The user last name.
                             example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
 
     friend-validation:
         publish:
@@ -110,6 +117,9 @@ channels:
                             type: integer
                         accepted:
                             type: boolean
+                    required:
+                        - user_id
+                        - accepted
         subscribe:
             message:
                 name: Friend validation
@@ -127,6 +137,10 @@ channels:
                             type: string
                             description: The user last name.
                             example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
 
     call-request:
         publish:
@@ -137,6 +151,8 @@ channels:
                     properties:
                         user_id:
                             type: integer
+                    required:
+                        - user_id
         subscribe:
             message:
                 name: Call request
@@ -154,6 +170,13 @@ channels:
                             type: string
                             description: The user last name.
                             example: 'Bay'
+                        offer:
+                            type: string
+                            description: The call offer.
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
 
     call-validation:
         publish:
@@ -166,6 +189,12 @@ channels:
                             type: integer
                         accepted:
                             type: boolean
+                        answer:
+                            type: string
+                            description: The call answer.
+                    required:
+                        - user_id
+                        - accepted
         subscribe:
             message:
                 name: Call validation
@@ -183,3 +212,7 @@ channels:
                             type: string
                             description: The user last name.
                             example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name

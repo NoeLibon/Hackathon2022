@@ -229,6 +229,9 @@ paths:
                                 position:
                                     type: string
                                     description: The user position.
+                                offer:
+                                    type: string
+                                    description: The call offer.
                             required:
                                 - sector
                                 - proximity

@@ -26,18 +26,17 @@ login_manager = LoginManager(app)
 
 user_status = {}
 
-call_queue = {
-    "teaching": {
+teaching = {}
 
-    },
-    "learning": {
-        
-    }
-}
+learning = {}
 
 friend_requests = set()
 
+call_requests = set()
+
 rooms = {}
+
+sids = {}
 
 CORS(app)
 
