@@ -1,6 +1,7 @@
 import React from 'react';
 import "../App.css";
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 class Call extends React.Component {
 
@@ -37,17 +38,17 @@ class Call extends React.Component {
             camerasAndChat: {
                 display: "flex",
                 flexDirection: "row",
-                height: "100%",
+                height: "75%",
             },
             otherCamera: {
                 display: "flex",
-                height: "86%",
+                height: "95%",
                 width: "70%",
                 backgroundColor: "#f9943b",
             },
             camAndChat: {
                 display: "flex",
-                height: "86%",
+                height: "95%",
                 width: "30%",
                 flexDirection: "column",
                 backgroundColor: "blue",
@@ -88,6 +89,9 @@ class Call extends React.Component {
                         </div>
                     </div>
                 </Container>
+                <Link to="/Call"><Button className="orangeButton">Passer à la personne suivante</Button></Link>
+                <Link to="/Home"><Button className="orangeButton">Quitter l'appel</Button></Link>
+                <Button className="orangeButton">Ajouter la personne dans mes amis</Button>
             </div>
 
         );
