@@ -1,0 +1,218 @@
+asyncapi: 2.0.0
+info:
+    title: HACKATHON
+    version: 1.0.0
+servers:
+    development:
+        url: http://localhost:5000/
+        protocol: socket.io
+        description: Development server.
+channels:
+    online-status:
+        subscribe:
+            message:
+                name: Online status
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        status:
+                            type: string
+                            enum: ['ONLINE', 'OFFLINE']
+                    required:
+                        - user_id
+                        - status
+    video-control:
+        subscribe:
+            message:
+                name: Video Control
+                payload:
+                    type: object
+                    properties:
+                        command:
+                            type: string
+                            enum: ['VIDEO_STOP', 'VIDEO_START']
+                    required:
+                        - command
+    chat:
+        publish:
+            message:
+                name: Chat
+                payload:
+                    type: object
+                    properties:
+                        message:
+                            type: string
+                    required:
+                        - message
+        subscribe:
+            message:
+                name: Chat
+                payload:
+                    type: object
+                    properties:
+                        date:
+                            type: string
+                            format: date
+                        message:
+                            type: string
+                    required:
+                        - date
+                        - message
+    chat-control:
+        subscribe:
+            message:
+                name: Chat control
+                payload:
+                    type: object
+                    properties:
+                        command:
+                            type: string
+                            enum: ['CHAT_RESET']
+                    required:
+                        - command
+
+    friend-request:
+        publish:
+            message:
+                name: Friend request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                    required:
+                        - user_id
+        subscribe:
+            message:
+                name: Friend request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
+
+    friend-validation:
+        publish:
+            message:
+                name: Friend validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        accepted:
+                            type: boolean
+                    required:
+                        - user_id
+                        - accepted
+        subscribe:
+            message:
+                name: Friend validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
+
+    call-request:
+        publish:
+            message:
+                name: Call request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                    required:
+                        - user_id
+        subscribe:
+            message:
+                name: Call request
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+                        offer:
+                            type: string
+                            description: The call offer.
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
+
+    call-validation:
+        publish:
+            message:
+                name: Call validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                        accepted:
+                            type: boolean
+                        answer:
+                            type: string
+                            description: The call answer.
+                    required:
+                        - user_id
+                        - accepted
+        subscribe:
+            message:
+                name: Call validation
+                payload:
+                    type: object
+                    properties:
+                        user_id:
+                            type: integer
+                            description: The user id.
+                        first_name:
+                            type: string
+                            description: The user first name.
+                            example: 'Michel'
+                        last_name:
+                            type: string
+                            description: The user last name.
+                            example: 'Bay'
+                    required:
+                        - user_id
+                        - first_name
+                        - last_name
