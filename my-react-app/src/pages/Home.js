@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
     render() {
         return (
-            <div>
+            <div id="corps">
                 <h1>Accueil</h1>
                 <Container>
                     <div id='boutonProfil'>
