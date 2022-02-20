@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from marshmallow import ValidationError
-from hackathon import db, user_status
+from hackathon import db, user_status, teaching, learning
 from hackathon.models import User
 from hackathon.serializers import LoginSerializer, RegisterSerializer, UpdateSerializer, UserSerializer, CallSerializer
 
@@ -58,7 +58,7 @@ class Register(Resource):
 class UserMe(Resource):
     """This type represents the user/me view."""
 
-    @jwt_required()
+    
     def get(self):
         """This function allows the user to get his informations.
 
@@ -73,7 +73,7 @@ class UserMe(Resource):
             "username": user.username
         }, 200
 
-    @jwt_required()
+    
     def post(self):
         """This function allows the user to update his informations.
 
@@ -98,7 +98,7 @@ class UserMe(Resource):
 class UserContact(Resource):
     """This type represents the user/contact view."""
 
-    @jwt_required()
+    
     def get(self):
         """This function allows the user to get his contacts.
 
@@ -116,7 +116,7 @@ class UserContact(Resource):
 class CallLearn(Resource):
     """This type represents the call/learn view."""
 
-    @jwt_required()
+    
     def post(self):
         """This function allows the user to join the learner queue.
 
@@ -133,6 +133,11 @@ class CallLearn(Resource):
         except ValidationError:
             return {"msg" : "Invalid data."}, 400
 
+        teachers = teaching.get(data["sector"], [])
+        if teachers > 0:
+            pass
+
+
         if data["sector"] not in user_status["learning"]:
             user_status["learning"][data["sector"]] = [user]
         else:
@@ -143,7 +148,7 @@ class CallLearn(Resource):
 class CallTeach(Resource):
     """This type represents the call/learn view."""
     
-    @jwt_required()
+    
     def post(self):
         """This function allows the user to join the teacher queue.
 
@@ -170,7 +175,7 @@ class CallTeach(Resource):
 class CallNext(Resource):
     """This type represents the call/next view."""
 
-    @jwt_required()
+    
     def post(self):
         """This function allows the user to change the user match.
 
@@ -185,7 +190,7 @@ class CallNext(Resource):
 class CallStop(Resource):
     """This type represents the call/stop view."""
     
-    @jwt_required()
+    
     def post(self):
         """This function allows the user to remove the user from the queue.
 
