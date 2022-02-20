@@ -2,7 +2,7 @@
     background-color:#f9943b !important;
     border-color: #f9943b !important;
     color:#000 !important;
-    width: 250px;
+    width: 220px;
     height: 90px;
     float:left;
     margin:32px;
@@ -18,12 +18,12 @@ h1{
     flex-wrap: wrap;
 } 
 
-#inscription{
-    width: 250px;
+.button{
+    width: 220px;
     height: 90px;
 }
 
-#formBasicEmail, #formBasicPassword{
+#formBasicUsername, #formBasicPassword, .formInput{
     height: 60px;
     font-size: larger;
 }

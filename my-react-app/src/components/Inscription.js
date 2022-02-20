@@ -64,7 +64,7 @@ class Inscription extends React.Component {
   render() {
     return (
         <div>
-            <Button variant="secondary" id="inscription" onClick={this.handleShow.bind(this)} >
+            <Button variant="secondary" className="button" onClick={this.handleShow.bind(this)} >
                 S'inscrire
             </Button>
 
@@ -98,10 +98,10 @@ class Inscription extends React.Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose.bind(this)}>
+                <Button variant="secondary" className="button" onClick={this.handleClose.bind(this)}>
                     Fermer la fenêtre
                 </Button>
-                <Button variant="primary" onClick={this.handleButtonClicked.bind(this)}>
+                <Button variant="primary" className="orangeButton" onClick={this.handleButtonClicked.bind(this)}>
                     S'inscrire
                 </Button>
                 </Modal.Footer>

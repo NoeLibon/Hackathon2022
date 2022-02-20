@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import { Button, Col, Container, Row, Dropdown } from 'react-bootstrap';
+import { Button, Form, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
@@ -10,32 +10,38 @@ class Home extends React.Component {
                 <h1>Accueil</h1>
                 <Container>
                     <div id='boutonProfil'>
-                    <form>
+                    <Form>
                         <p>
                             Sélectionner un secteur:
                         </p>
-                        <Row>
-                        <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Tous les secteurs
-                        </Dropdown.Toggle>
+                        <Form.Select aria-label="Default select example">
+                        <option>Tous les secteurs</option>
+                        <option value="1">Cuisine</option>
+                        <option value="2">Menuisirie</option>
+                        <option value="3">Mécanique</option>
+                        </Form.Select>
+                        <div key="inline-radio" className="mb-3">
+                            <Form.Check
+                                inline
+                                label="Enseigner"
+                                name="group1"
+                                type="radio"
+                                id="inline-radio-1"
+                            />
+                            <Form.Check
+                                inline
+                                label="Apprendre"
+                                name="group1"
+                                type="radio"
+                                id="inline-radio-2"
+                            />
+                            </div>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Cuisine</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Menuisirie</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Informatique</Dropdown.Item>
-                        </Dropdown.Menu>
-                        </Dropdown>
-                        </Row>
-                    <Row>
-                        <Col><Button className="orangeButton">Préférence pour enseigner</Button></Col>
-                        <Col><Button className="orangeButton">Préférence pour apprendre</Button></Col>
-                    </Row>
                 <div id='localite'>
                     <p>Proximité :</p><input type="number" step = "1" min="1" max="100"></input>
                 </div>
                    <Link to="/Call"><Button className="orangeButton">Commencer l'appel</Button></Link>
-                    </form>
+                    </Form>
 <Link to="/Profile"><Button className="orangeButton" id='boutonProfil'>Voir mon profil</Button></Link>
 
 

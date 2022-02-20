@@ -54,9 +54,9 @@ class LoginForm extends React.Component {
     return (
       <div>
           <Form style={styles.form}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicUsername">
               <Form.Label>Nom du profil</Form.Label>
-              <Form.Control type="profile" placeholder="Entrez le nom de votre profil" required value={this.state.username} onChange={this.handleUsername.bind(this)}/>
+              <Form.Control type="username" placeholder="Entrez le nom de votre profil" required value={this.state.username} onChange={this.handleUsername.bind(this)}/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
